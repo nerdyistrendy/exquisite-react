@@ -14,17 +14,29 @@ const PlayerSubmissionForm = (props) => {
 
   const [formFields, setFormFields] = useState(values);
 
+
+  const onInputChange = (event) => {
+    const newFormFields = {
+      ...formFields,
+    }
+    newFormFields[event.target.name] = event.target.value;
+    setFormFields(newFormFields);
+  }
+
   const inputComponents = props.fields.map((field, i) => {
     if (field.key) {
       return <input key={i}
         placeholder={field.placeholder}
         type="text"
         value={formFields[field.key]}
+        name={field.key}
+        onChange={onInputChange}
       />;
     } else {
       return field;
     }
   });
+
 
   return (
     <div className="PlayerSubmissionForm">
@@ -34,8 +46,8 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          { inputComponents }
-          {/* <input
+        {inputComponents}
+          {/* 
             placeholder="hm..."
             type="text" /> */}
 
