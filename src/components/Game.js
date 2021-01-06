@@ -6,6 +6,7 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const [poemList, setPoemsList] = useState([]);
+  const [index, setIndex] = useState(1);
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -17,6 +18,7 @@ const Game = () => {
 
 
   const addPoem = (newPoem) => {
+    setIndex(index + 1);
     setPoemsList([...poemList, newPoem]);
   };
  
@@ -35,7 +37,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS} addPoemCallback={addPoem}/>
+      <PlayerSubmissionForm fields={FIELDS} addPoemCallback={addPoem} index={index}/>
 
       <FinalPoem poemList={poemList}/>
 
