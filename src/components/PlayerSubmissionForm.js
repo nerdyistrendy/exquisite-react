@@ -30,8 +30,8 @@ const PlayerSubmissionForm = (props) => {
       } else {
         return field;
       }
-    });
-    props.addPoemCallback(poem.join(' '));
+    }).join(' ');
+    props.addPoemCallback(poem);
     setFormFields(emptyValues);
   };
 
