@@ -16,12 +16,11 @@ const Game = () => {
     }
   }).join(' ');
 
-
   const addPoem = (newPoem) => {
     setIndex(index + 1);
     setPoemsList([...poemList, newPoem]);
   };
- 
+
   
   return (
     <div className="Game">
