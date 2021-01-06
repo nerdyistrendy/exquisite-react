@@ -3,7 +3,29 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
+
+  const values = {};
+  props.fields.forEach(field => {
+    if (field.key) {
+      values[field.key] = '';
+    }
+  });
+
+  const [formFields, setFormFields] = useState(values);
+
+  const inputComponents = props.fields.map((field, i) => {
+    if (field.key) {
+      return <input key={i}
+        placeholder={field.placeholder}
+        value={formFields[field.key]}
+        type="text"
+      />;
+    } else {
+      return field;
+    }
+  });
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
@@ -12,12 +34,10 @@ const PlayerSubmissionForm = () => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-          <input
+          { inputComponents }
+          {/* <input
             placeholder="hm..."
-            type="text" />
+            type="text" /> */}
 
         </div>
 
