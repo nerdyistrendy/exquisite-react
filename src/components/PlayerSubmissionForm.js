@@ -8,7 +8,7 @@ const PlayerSubmissionForm = (props) => {
   const values = {};
   props.fields.forEach(field => {
     if (field.key) {
-      values[field.key] = field.placeholder;
+      values[field.key] = '';
     }
   });
 
