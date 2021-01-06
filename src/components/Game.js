@@ -5,6 +5,8 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [poemList, setPoemsList] = useState([]);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -13,6 +15,12 @@ const Game = () => {
     }
   }).join(' ');
 
+
+  const addPoem = (newPoem) => {
+    setPoemsList([...poemList, newPoem]);
+  };
+ 
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,9 +35,9 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS}/>
+      <PlayerSubmissionForm fields={FIELDS} addPoemCallback={addPoem}/>
 
-      <FinalPoem />
+      <FinalPoem poemList={poemList}/>
 
     </div>
   );

@@ -25,11 +25,16 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
-    // props.addStudentCallback(formFields);
+    const poem = props.fields.map((field) => {
+      if (field.key) {
+        return formFields[field.key];
+      } else {
+        return field;
+      }
+    });
+    props.addPoemCallback(poem.join(' '));
     setPlayer(player + 1);
     setFormFields(emptyValues);
-    
   };
 
   const inputComponents = props.fields.map((field, i) => {
