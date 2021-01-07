@@ -6,7 +6,6 @@ const FinalPoem = (props) => {
 
   const finalPoem = () => {
     if (props.isSubmitted) {
-      console.log('xxx')
       return (
         <section className="FinalPoem__poem"> 
           <h3>Final Poem</h3>

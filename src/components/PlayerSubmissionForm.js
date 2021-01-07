@@ -57,7 +57,7 @@ const PlayerSubmissionForm = (props) => {
   if (!props.isSubmitted) {
   return (
     <div className="PlayerSubmissionForm">
-
+      <h3>Player Submission Form for Player #{props.index}</h3>
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
