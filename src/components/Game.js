@@ -7,6 +7,7 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
   const [poemList, setPoemsList] = useState([]);
   const [index, setIndex] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -21,7 +22,11 @@ const Game = () => {
     setPoemsList([...poemList, newPoem]);
   };
 
-  
+  const revealPoem = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -34,11 +39,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission recentPoem={ poemList[poemList.length - 1] }/>
+      <RecentSubmission submission={!isSubmitted && poemList.length !== 0 ? poemList[poemList.length - 1] : ''}/>
 
-      <PlayerSubmissionForm fields={FIELDS} sendSubmission={addPoem} index={index}/>
+      <PlayerSubmissionForm fields={FIELDS} sendSubmission={addPoem} index={index} isSubmitted={isSubmitted}/>
 
-      <FinalPoem poemList={poemList}/>
+      <FinalPoem submissions={poemList} isSubmitted={isSubmitted} revealPoem={revealPoem}/>
 
     </div>
   );

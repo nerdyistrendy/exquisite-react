@@ -54,10 +54,9 @@ const PlayerSubmissionForm = (props) => {
       return field;
     }
   });
-
+  if (!props.isSubmitted) {
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit}>
 
@@ -70,7 +69,11 @@ const PlayerSubmissionForm = (props) => {
         </div>
       </form>
     </div>
-  );
+  )
+  } else {
+    return ('')
+  } 
+
 }
 
 PlayerSubmissionForm.propTypes = {
